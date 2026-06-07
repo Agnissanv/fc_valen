@@ -430,7 +430,8 @@ nav a.active {
     margin-top: 20px;
 }
 
-.matchs-table th, .matchs-table td {
+.matchs-table th, 
+.matchs-table td {
     padding: 12px 15px;
     text-align: left;
     border-bottom: 1px solid #2a2c31;
@@ -485,11 +486,9 @@ nav a.active {
 
 .classement-table th,
 .classement-table td {
-    width: 50%;
-    padding: 10px 8px;
-    text-align: center;
+    padding: 12px 15px;
+    text-align: left;
     border-bottom: 1px solid #2a2c31;
-    font-size: 0.9rem;
 }
 
 .classement-table th {

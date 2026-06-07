@@ -1,0 +1,70 @@
+
+
+1. La Palette de Couleurs (Codes HEX)
+        ____________________________________________________________________________________________________________________________________________|
+        Rôle                |  Teinte          |  Code HEX   |  Utilisation marketing / CSS                                                         |
+        --------------------------------------------------------------------------------------------------------------------------------------------|
+        Fond Principal      |  Noir Profond    |  #0A0A0C  |  Apporte le côté premium, immersif (effet stade de nuit).                              |
+        --------------------------------------------------------------------------------------------------------------------------------------------|
+        Conteneurs / Cartes |  Noir Allégé     |  #16171A  |  Pour détacher tes sections, tes cartes de joueurs et tes tableaux du fond.            |
+        --------------------------------------------------------------------------------------------------------------------------------------------|
+        Couleur Majeure     |  Vert Électrique |  #00E676  |  Attire l'attention instantanément. Idéal pour les boutons, les hovers et l'étoile.    |
+        --------------------------------------------------------------------------------------------------------------------------------------------|
+        Texte Principal     |  Blanc Pur       |  #FFFFFF  |  Lisibilité maximale sur fond sombre.                                                  |
+        --------------------------------------------------------------------------------------------------------------------------------------------|
+        Texte Secondaire    |  Gris Clair      |  #A0A5B5  |  Pour les petits détails, les dates ou les textes moins importants.                    |
+        ____________________________________________________________________________________________________________________________________________|
+
+
+font 2. La Typographie (Google Fonts)
+
+    Pour les Titres (<h1>, <h2>, <h3>) : Bebas Neue
+        Style : Une police tout en majuscules, condensée, très typée "médias sportifs" (comme les designs de l'Équipe ou de Nike). Elle impose une direction forte dès le premier coup d'œil.
+
+    Pour le Texte Courant (<p>, <li>, <td>) : Space Grotesk ou Inter
+        Style : Ultra-moderne, lisible même en petite taille sur un écran noir.
+
+Le lien à copier dans le <head> de TOUTES les pages :
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
+
+
+3. Structure, Marges et Composants (Uniformité)
+
+    Arrondis (border-radius) : 8px pour tes cartes de joueurs, tes images de galerie et tes boutons. Cela donne un aspect moderne sans être trop rond.
+
+    Ombres (box-shadow) : Une lueur verte très discrète ou une ombre noire intense pour décoller tes éléments du fond : box-shadow: 0 4px 20px rgba(0, 230, 118, 0.15);
+
+    Marges internes (padding) : Utilise des valeurs fixes pour tes sections (par exemple padding: 60px 20px;) pour que le site respire de la même manière sur chaque page.
+
+4. Tes Variables CSS prêtes à l'emploi
+
+    :root {
+        /* Couleurs */
+        --bg-main: #0A0A0C;
+        --bg-card: #16171A;
+        --primary-green: #00E676;
+        --text-light: #FFFFFF;
+        --text-muted: #A0A5B5;
+
+        /* Typographies */
+        --font-titles: 'Bebas Neue', sans-serif;
+        --font-body: 'Space Grotesk', sans-serif;
+
+        /* Alignements et angles */
+        --radius: 8px;
+        --transition: all 0.3s ease;
+    }
+
+
+
+
+
+
+
+
+
+
+    

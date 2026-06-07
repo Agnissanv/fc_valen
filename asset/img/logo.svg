@@ -1,0 +1,26 @@
+
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="100%" height="100%">
+  
+  <!-- Les 6 Étoiles du Champion (Sommet) -->
+  <!-- Chaque étoile est décalée horizontalement avec transform="translate(...)" -->
+  <polygon points="100,10 103,18 111,18 105,23 107,31 100,26 93,31 95,23 89,18 97,18" fill="#00CC66" transform="translate(-60, 0)" />
+  <polygon points="100,10 103,18 111,18 105,23 107,31 100,26 93,31 95,23 89,18 97,18" fill="#00CC66" transform="translate(-36, 0)" />
+  <polygon points="100,10 103,18 111,18 105,23 107,31 100,26 93,31 95,23 89,18 97,18" fill="#00CC66" transform="translate(-12, 0)" />
+  <polygon points="100,10 103,18 111,18 105,23 107,31 100,26 93,31 95,23 89,18 97,18" fill="#00CC66" transform="translate(12, 0)" />
+  <polygon points="100,10 103,18 111,18 105,23 107,31 100,26 93,31 95,23 89,18 97,18" fill="#00CC66" transform="translate(36, 0)" />
+  <polygon points="100,10 103,18 111,18 105,23 107,31 100,26 93,31 95,23 89,18 97,18" fill="#00CC66" transform="translate(60, 0)" />
+
+  <!-- Bouclier Principal (Fond Noir, Bordure Verte) -->
+  <path d="M30,35 L170,35 L170,100 C170,145 100,180 100,180 C100,180 30,145 30,100 Z" fill="#121212" stroke="#00CC66" stroke-width="6" stroke-linejoin="round"/>
+  
+  <!-- Texte "FC VALEN" (Haut du bouclier) -->
+  <text x="100" y="68" fill="#FFFFFF" font-family="'Montserrat', 'Impact', 'Arial Black', sans-serif" font-size="20" font-weight="800" text-anchor="middle" letter-spacing="4">FC VALEN</text>
+  
+  <!-- Le "V" de VALEN (Design asymétrique et tranchant) -->
+  <!-- Branche Gauche : Blanc Pur -->
+  <path d="M65,85 L92,145 L100,145 L76,85 Z" fill="#FFFFFF" />
+  
+  <!-- Branche Droite : Vert Électrique -->
+  <path d="M135,85 L108,145 L100,145 L124,85 Z" fill="#00CC66" />
+  
+</svg>

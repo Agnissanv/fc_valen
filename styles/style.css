@@ -126,7 +126,7 @@ nav a.active {
 /* hero */
 /* hero */
 .hero {
-    background-image: url('./asset/img/bg_hero.jpg');
+    background-image: url('asset/img/bg_hero.jpg');
     background-size: cover;
     background-position: center top; 
     background-repeat: no-repeat;

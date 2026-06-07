@@ -154,6 +154,7 @@ nav a.active {
     transition: var(--transition);
     border: none;
     cursor: pointer;
+    width: 100%;
 }
 
 .btn-primary:hover {
@@ -242,7 +243,7 @@ nav a.active {
     text-align: center;
     transition: var(--transition);
     flex: 1;
-    min-width: 220px;
+    min-width: 200px;
     box-shadow: 0 4px 12px rgba(0,0,0,0.3);
 }
 
@@ -252,8 +253,8 @@ nav a.active {
 
 .maillot-card img {
     width: 100%;
-    height: 350px;
-    object-fit: cover;
+    height: 400px;
+    object-fit:contain;
     border-radius: var(--radius);
     margin-bottom: 10px;
 }
@@ -274,6 +275,7 @@ nav a.active {
     font-size: 1.1rem;
     transition: var(--transition);
     margin-top: 10px;
+    width: 100%;
 }
 
 .btn-buy:hover {
@@ -290,6 +292,7 @@ nav a.active {
     cursor: pointer;
     font-size: 2.1rem;
     transition: var(--transition);
+    width: 100%;
 }
 
 .btn-scroll:hover {
@@ -463,7 +466,7 @@ nav a.active {
 
 /* Section Classement */
 .classement {
-    margin: 60px 0;
+    margin: 50px 0;
 }
 .classement p{
     color: var(--text-muted);
@@ -471,13 +474,12 @@ nav a.active {
 }
 
 .classement-table {
-    width: 50%;
+    width: 100%;
     border-collapse: collapse;
     background-color: var(--bg-card);
     border-radius: var(--radius);
-    overflow-x: auto;
-    display: block;
-    margin: 20px auto 0;
+    overflow: hidden;
+    margin-top: 20px;
     
 }
 
@@ -511,7 +513,7 @@ nav a.active {
     margin-top: 20px;
     font-size: 0.85rem;
     color: var(--text-muted);
-    text-align: right;
+    text-align: center;
 }
 
 /* PAGE CONTACT*/
@@ -748,66 +750,264 @@ footer {
     font-size: 1.1rem;
 }
 
-/* RESPONSIVE */
+/* =========================================
+   BOUTON HAMBURGER (Invisible sur PC)
+   ========================================= */
+.menu-toggle {
+    display: none;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 30px;
+    height: 21px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    z-index: 1010;
+    padding: 0;
+}
+
+.menu-toggle .bar {
+    width: 100%;
+    height: 3px;
+    background-color: var(--primary-green);
+    border-radius: 10px;
+    transition: var(--transition);
+}
+
+/* Animation des barres en croix au clic */
+.menu-toggle.active .bar:nth-child(1) {
+    transform: translateY(9px) rotate(45deg);
+}
+
+.menu-toggle.active .bar:nth-child(2) {
+    opacity: 0;
+}
+
+.menu-toggle.active .bar:nth-child(3) {
+    transform: translateY(-9px) rotate(-45deg);
+}
+
+
+/* =========================================
+   RESPONSIVE DESIGN AUTOMATIQUE
+   ========================================= */
+
+/* 1. Écrans moyens (Tablettes et PC portables) : max 1024px */
+@media (max-width: 1024px) {
+    .hero {
+        min-height: 500px;
+        padding-bottom: 10px;
+    }
+    .actu-text {
+        padding: 10px;
+    }
+    .classement-table {
+        width: 90%;
+    }
+    .hero {
+        min-height: 400px;
+        height: 50vh;
+        padding-bottom: 80px;
+        background-position: center center;
+        
+        /* ⬇️ AJOUTE CETTE LIGNE ICI ⬇️ */
+        background-image: url('../asset/img/hero-mobile.jpg'); /* Mets ici le chemin de ton image mobile */
+    }
+}
+
+/* 2. Écrans Mobiles (Smartphones et tablettes) : max 768px */
 @media (max-width: 768px) {
+    /* Maintien du logo à gauche et du bouton à droite */
     .header-container {
+        position: relative;
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+        padding: 15px 20px;
+    }
+
+    /* Affichage du bouton hamburger */
+    .menu-toggle {
+        display: flex;
+    }
+
+    .hero {
+        min-height: 400px;
+        height: 55vh;
+        padding-bottom: 10px;
+        background-position: center center;
+        
+        /* ⬇️ AJOUTE CETTE LIGNE ICI ⬇️ */
+        background-image: url('../asset/img/hero-mobile.jpg'); /* Mets ici le chemin de ton image mobile */
+    }
+
+    /* Transformation du menu en rideau déroulant absolu */
+    nav {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background-color: var(--bg-card);
+        border-bottom: 3px solid var(--primary-green);
+        padding: 20px 0;
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
+        
+        /* Effet d'apparition fluide caché par défaut */
+        opacity: 0;
+        visibility: hidden;
+        transform: translateY(-15px);
+        transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s ease;
+        z-index: 1000;
+    }
+
+    /* Affichage du menu quand le JS ajoute la classe .active */
+    nav.active {
+        opacity: 1;
+        visibility: visible;
+        transform: translateY(0);
+    }
+
+    /* Alignement vertical des liens dans le menu déroulant */
+    nav ul {
         flex-direction: column;
+        align-items: center;
+        gap: 20px;
+    }
+
+    nav a {
+        font-size: 1.2rem;
+        display: block;
+        padding: 8px 20px;
+        width: 100%;
         text-align: center;
     }
-    
-    nav ul {
-        justify-content: center;
+
+    nav a.active {
+        border-bottom: none;
+        color: var(--primary-green);
+        background: rgba(0, 230, 118, 0.05);
+        border-radius: var(--radius);
     }
-    
-    .footer-container {
-        flex-direction: column;
+
+    /* --- NOUVEAU LAYOUT ÉQUIPE (3 colonnes sur Tablettes) --- */
+    .players-grid, .staff-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr); /* Aligne sur 3 colonnes */
+        gap: 15px; /* Espace optimisé entre les cartes */
+        padding: 0 10px;
     }
-    
+
+    .player-card, .staff-card {
+        width: 100%; /* Occupe sa colonne de grille */
+        padding: 12px; /* Un peu moins de padding interne */
+    }
+
+    .player-card img, .staff-card img {
+        height: 140px; /* Redimensionne les photos proportionnellement */
+        margin-bottom: 8px;
+    }
+
+    .player-card h4, .staff-card h4 {
+        font-size: 1.1rem; /* Texte plus compact */
+    }
+
+    .player-card p, .staff-card p {
+        font-size: 0.85rem;
+    }
+
+    /* Ajustement des autres sections pour mobile */
     h2 {
         font-size: 2rem;
+        margin-bottom: 1rem;
     }
-    
-    .hero-content h2 {
-        font-size: 2.5rem;
+
+    .hero {
+        min-height: 400px;
+        height: 55vh;
+        padding-bottom: 80px;
+        background-position: center center;
     }
-    
+
     .actu-card {
         flex-direction: column;
     }
-    
-    .contact-wrapper {
-        flex-direction: column;
+
+    .actu-img {
+        height: 240px;
     }
-    
-    .stats-grid {
+
+    .stats-grid, .contact-wrapper {
+        flex-direction: column;
         gap: 20px;
     }
-    
-    .matchs-table th, .matchs-table td {
-        padding: 8px;
-        font-size: 0.85rem;
+
+    .stat-item {
+        width: 90%;
     }
-}
 
-/* Petits écrans */
-@media (max-width: 480px) {
-    .maillot-card, .player-card {
-        width: 100%;
-    }
-    
-    .galerie-grid {
-        grid-template-columns: 1fr;
-    }
-}
-
-
-
-/* Responsive : table scrollable horizontalement sur mobile */
-@media (max-width: 768px) {
-    .classement-table {
+    /* Gestion intelligente du scroll horizontal des tableaux */
+    .matchs-table, .classement-table {
         display: block;
         overflow-x: auto;
         white-space: nowrap;
+        width: 100%;
+    }
+
+    .footer-container {
+        flex-direction: column;
+        gap: 20px;
+        text-align: center;
+    }
+
+    .footer-links {
+        justify-content: center;
+        flex-wrap: wrap;
     }
 }
 
+/* 3. Très petits écrans (Smartphones compacts) : max 480px */
+@media (max-width: 480px) {
+    /* --- NOUVEAU LAYOUT ÉQUIPE (2 colonnes sur Smartphones) --- */
+    .players-grid, .staff-grid {
+        grid-template-columns: repeat(2, 1fr); /* Aligne sur 2 colonnes */
+        gap: 10px; /* Espace serré et propre */
+    }
+
+    .player-card, .staff-card {
+        padding: 8px;
+    }
+
+    .player-card img, .staff-card img {
+        height: 115px; /* Hauteur parfaite pour les petits écrans de smartphones */
+    }
+
+    .player-card h4, .staff-card h4 {
+        font-size: 0.95rem; /* Évite les retours à la ligne brusques dans les noms */
+    }
+
+    /* Autres ajustements maillots, actus et grilles */
+    .maillot-card, 
+    .actualité-card {
+        width: 90%;
+    }
+
+    .palmares-grid,
+    .galerie-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .btn-primary, .btn-buy {
+        width: 100%;
+        text-align: center;
+    }
+
+        .hero {
+        min-height: 50px;
+        height: 40vh;
+        padding-bottom: 50px;
+        background-position: center center;
+        
+        /* ⬇️ AJOUTE CETTE LIGNE ICI ⬇️ */
+        background-image: url('../asset/img/hero-mobile.jpg'); /* Mets ici le chemin de ton image mobile */
+    }
+}

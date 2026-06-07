@@ -379,6 +379,27 @@ nav a.active {
     font-style: italic;
 }
 
+/* Style pour l'organisation de l'équipe */
+.position-group {
+    margin-bottom: 60px; /* Espace important entre chaque ligne d'effectif */
+}
+
+.position-title {
+    font-size: 1.8rem;
+    color: var(--text-light);
+    margin-bottom: 20px;
+    border-bottom: 2px solid #2a2c31; /* Ligne de séparation fine en dessous */
+    padding-bottom: 8px;
+    display: inline-block;
+    min-width: 200px;
+}
+
+/* Optionnel : Une petite touche de vert sur le premier mot ou un effet au survol */
+.position-group:hover .position-title {
+    border-bottom-color: var(--primary-green);
+    transition: var(--transition);
+}
+
 /* PAGE GALERIE */
 .galerie-grid {
     display: grid;

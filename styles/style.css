@@ -23,6 +23,7 @@ body {
     font-family: var(--font-body);
     line-height: 1.6;
     font-size: 1rem;
+    overflow-x: hidden;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -56,9 +57,11 @@ img {
     height: auto;
     display: block;
     box-shadow: 0 6px 30px rgba(0, 230, 118, 0.1);
+    border-radius: calc(var(--radius) - 2px);
 }
 
 .header-container, main, .footer-container {
+    width: 100%;
     max-width: 1200px;
     margin: 0 auto;
     padding: 0 20px;

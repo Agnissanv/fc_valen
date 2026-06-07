@@ -93,6 +93,7 @@ header {
 .logo img {
     width: 50px;
     height: auto;
+    box-shadow:none;
 }
 
 .logo h1 {
@@ -713,6 +714,9 @@ footer {
     align-items: center;
     gap: 10px;
 }
+.footer-logo img {
+    box-shadow:none;
+}
 
 .footer-logo p {
     font-family: var(--font-titles);
@@ -728,6 +732,18 @@ footer {
 .footer-links {
     display: flex;
     gap: 20px;
+}
+.social_media {
+    display: flex;
+    gap: 10px;
+}
+.social_media a {
+    color: var(--text-muted);
+    font-size: 1.2rem;
+    transition: var(--transition);
+}
+.social_media a:hover {
+    color: var(--primary-green);
 }
 
 .footer-links a {

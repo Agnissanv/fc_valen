@@ -779,3 +779,66 @@ footer {
     font-size: 1.1rem;
 }
 
+/* RESPONSIVE */
+@media (max-width: 768px) {
+    .header-container {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    nav ul {
+        justify-content: center;
+    }
+    
+    .footer-container {
+        flex-direction: column;
+    }
+    
+    h2 {
+        font-size: 2rem;
+    }
+    
+    .hero-content h2 {
+        font-size: 2.5rem;
+    }
+    
+    .actu-card {
+        flex-direction: column;
+    }
+    
+    .contact-wrapper {
+        flex-direction: column;
+    }
+    
+    .stats-grid {
+        gap: 20px;
+    }
+    
+    .matchs-table th, .matchs-table td {
+        padding: 8px;
+        font-size: 0.85rem;
+    }
+}
+
+/* Petits écrans */
+@media (max-width: 480px) {
+    .maillot-card, .player-card {
+        width: 100%;
+    }
+    
+    .galerie-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+
+
+/* Responsive : table scrollable horizontalement sur mobile */
+@media (max-width: 768px) {
+    .classement-table {
+        display: block;
+        overflow-x: auto;
+        white-space: nowrap;
+    }
+}
+

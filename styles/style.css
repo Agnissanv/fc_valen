@@ -345,7 +345,7 @@ nav a.active {
     margin: 5px 0;
 }
 
-.numero {
+.numero, .pays {
     color: var(--text-muted);
     font-size: 0.9rem;
 }

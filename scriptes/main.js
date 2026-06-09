@@ -115,8 +115,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // 5. ANIMATIONS D'APPARITION AU SCROLL (Scroll Reveal)
     // ==========================================
     // On cible tous les éléments qui méritent une animation d'entrée
-    const elementsToAnimate = document.querySelectorAll('.actu-card, .player-card, .staff-card, .galerie-item, .contact-container, .match-card');
-
+    const elementsToAnimate = document.querySelectorAll('.actu-card, .player-card, .staff-card, .galerie-item, .contact-container, .match-card, .actualité, .palmares-item, .chiffre-item');
     if (elementsToAnimate.length > 0) {
         // On leur ajoute la classe de départ cachée directement en JS
         elementsToAnimate.forEach(el => {
@@ -126,10 +125,14 @@ document.addEventListener('DOMContentLoaded', () => {
         // Configuration de l'observateur
         const revealCallback = (entries, observer) => {
             entries.forEach(entry => {
-                // Si l'élément est visible à au moins 10% dans l'écran
                 if (entry.isIntersecting) {
                     entry.target.classList.add('reveal-visible');
-                    // Une fois animé, on arrête de l'observer pour économiser les performances
+                    
+                    // NOUVEAU : Si c'est un compteur, on lance l'animation
+                    if (entry.target.classList.contains('chiffre-number')) {
+                        animateCounter(entry.target);
+                    }
+                    
                     observer.unobserve(entry.target);
                 }
             });
@@ -146,3 +149,31 @@ document.addEventListener('DOMContentLoaded', () => {
             revealObserver.observe(el);
         });
     }
+
+    // ==========================================
+    // 6. ANIMATION COMPTEUR DE CHIFFRES
+    // ==========================================
+    const animateCounter = (el) => {
+        const target = parseInt(el.innerText.replace(/\D/g, '')); // Extrait le nombre du texte (ex: 600+ -> 600)
+        let count = 0;
+        const duration = 2000; // Durée de l'animation en ms
+        const step = target / (duration / 16); // Calcul du pas
+
+        const update = () => {
+            count += step;
+            if (count < target) {
+                el.innerText = Math.floor(count) + (el.innerText.includes('+') ? '+' : '');
+                requestAnimationFrame(update);
+            } else {
+                el.innerText = target + (el.innerText.includes('+') ? '+' : '');
+            }
+        };
+        update();
+    };
+
+    // On l'intègre dans notre observateur existant (IntersectionObserver)
+    // Dans le callback 'revealCallback' précédent, ajoute cette condition :
+    /* if (entry.target.classList.contains('chiffre-number')) {
+           animateCounter(entry.target);
+       }
+    */

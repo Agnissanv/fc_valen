@@ -1216,6 +1216,7 @@ Pour que tes chiffres clés se démarquent du palmarès, on va leur donner un st
     line-height: 1;
     margin-bottom: 10px;
     text-shadow: 0 0 20px rgba(0, 230, 118, 0.3);
+    text-align: center;
 }
 
 .chiffre-titre {

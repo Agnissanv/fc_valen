@@ -147,19 +147,29 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Fonction de comptage
     function animateCounter(el) {
-        const target = parseInt(el.innerText.replace(/\D/g, ''));
-        let count = 0;
-        const duration = 2000;
-        const step = target / (duration / 16);
+    // 1. On récupère tout le texte (ex: "50K" ou "600+")
+    const fullText = el.innerText;
+    
+    // 2. On extrait le nombre
+    const target = parseInt(fullText.replace(/\D/g, ''));
+    
+    // 3. On récupère le suffixe (tout ce qui n'est pas un chiffre)
+    const suffix = fullText.replace(/\d/g, ''); 
+    
+    let count = 0;
+    const duration = 2000;
+    const step = target / (duration / 16);
 
-        const update = () => {
-            count += step;
-            if (count < target) {
-                el.innerText = Math.floor(count) + (el.innerText.includes('+') ? '+' : '');
-                requestAnimationFrame(update);
-            } else {
-                el.innerText = target + (el.innerText.includes('+') ? '+' : '');
-            }
-        };
-        update();
-    }
+    const update = () => {
+        count += step;
+        if (count < target) {
+            // On affiche le nombre arrondi + le suffixe
+            el.innerText = Math.floor(count) + suffix;
+            requestAnimationFrame(update);
+        } else {
+            // À la fin, on affiche la valeur cible + le suffixe
+            el.innerText = target + suffix;
+        }
+    };
+    update();
+}

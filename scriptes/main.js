@@ -112,22 +112,23 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // ==========================================
-    // 5. ANIMATIONS D'APPARITION AU SCROLL
+    // 5 & 6. ANIMATIONS AU SCROLL + COMPTEUR
     // ==========================================
-    const elementsToAnimate = document.querySelectorAll('.actu-card, .player-card, .staff-card, .galerie-item, .contact-container, .match-card, .palmares-item, .chiffre-item');
+    const elementsToAnimate = document.querySelectorAll('.actu-card, .actualité, .classement, .prochains-matchs, .resultats, .player-card, .staff-card, .galerie-item, .contact-container, .match-card, .palmares-item, .chiffre-item');
 
     const revealCallback = (entries, observer) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
+                // 1. Déclencher l'apparition fluide
                 entry.target.classList.add('reveal-visible');
-
-                // Si c'est un chiffre, on lance l'animation de comptage
-                // On vérifie si l'élément contient le nombre (ou si c'est l'item qui le contient)
-                const numberEl = entry.target.querySelector('.chiffre-number');
-                if (numberEl) {
-                    animateCounter(numberEl);
+                
+                // 2. Si c'est un chiffre, déclencher le compteur
+                const counter = entry.target.querySelector('.chiffre-number');
+                if (counter) {
+                    animateCounter(counter);
                 }
-
+                
+                // 3. Arrêter d'observer pour optimiser
                 observer.unobserve(entry.target);
             }
         });
@@ -139,13 +140,13 @@ document.addEventListener('DOMContentLoaded', () => {
         rootMargin: "0px 0px -50px 0px"
     });
 
-    elementsToAnimate.forEach(el => revealObserver.observe(el));
+    elementsToAnimate.forEach(el => {
+        el.classList.add('reveal-hidden'); // S'assure qu'ils sont cachés au départ
+        revealObserver.observe(el);
+    });
 
-    // ==========================================
-    // 6. ANIMATION COMPTEUR DE CHIFFRES
-    // ==========================================
-    const animateCounter = (el) => {
-        // On récupère la valeur cible
+    // Fonction de comptage
+    function animateCounter(el) {
         const target = parseInt(el.innerText.replace(/\D/g, ''));
         let count = 0;
         const duration = 2000;
@@ -161,4 +162,4 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         };
         update();
-    };
+    }

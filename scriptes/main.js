@@ -112,52 +112,44 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // ==========================================
-    // 5. ANIMATIONS D'APPARITION AU SCROLL (Scroll Reveal)
+    // 5. ANIMATIONS D'APPARITION AU SCROLL
     // ==========================================
-    // On cible tous les éléments qui méritent une animation d'entrée
-    const elementsToAnimate = document.querySelectorAll('.actu-card, .player-card, .staff-card, .galerie-item, .contact-container, .match-card, .actualité, .palmares-item, .chiffre-item');
-    if (elementsToAnimate.length > 0) {
-        // On leur ajoute la classe de départ cachée directement en JS
-        elementsToAnimate.forEach(el => {
-            el.classList.add('reveal-hidden');
-        });
+    const elementsToAnimate = document.querySelectorAll('.actu-card, .player-card, .staff-card, .galerie-item, .contact-container, .match-card, .palmares-item, .chiffre-item');
 
-        // Configuration de l'observateur
-        const revealCallback = (entries, observer) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('reveal-visible');
-                    
-                    // NOUVEAU : Si c'est un compteur, on lance l'animation
-                    if (entry.target.classList.contains('chiffre-number')) {
-                        animateCounter(entry.target);
-                    }
-                    
-                    observer.unobserve(entry.target);
+    const revealCallback = (entries, observer) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('reveal-visible');
+
+                // Si c'est un chiffre, on lance l'animation de comptage
+                // On vérifie si l'élément contient le nombre (ou si c'est l'item qui le contient)
+                const numberEl = entry.target.querySelector('.chiffre-number');
+                if (numberEl) {
+                    animateCounter(numberEl);
                 }
-            });
-        };
 
-        const revealObserver = new IntersectionObserver(revealCallback, {
-            root: null, // Par rapport au viewport (l'écran)
-            threshold: 0.1, // Déclenche dès que 10% de l'objet est visible
-            rootMargin: "0px 0px -50px 0px" // Se déclenche un poil avant que l'élément soit trop haut
+                observer.unobserve(entry.target);
+            }
         });
+    };
 
-        // On active l'observation sur chaque élément
-        elementsToAnimate.forEach(el => {
-            revealObserver.observe(el);
-        });
-    }
+    const revealObserver = new IntersectionObserver(revealCallback, {
+        root: null,
+        threshold: 0.1,
+        rootMargin: "0px 0px -50px 0px"
+    });
+
+    elementsToAnimate.forEach(el => revealObserver.observe(el));
 
     // ==========================================
     // 6. ANIMATION COMPTEUR DE CHIFFRES
     // ==========================================
     const animateCounter = (el) => {
-        const target = parseInt(el.innerText.replace(/\D/g, '')); // Extrait le nombre du texte (ex: 600+ -> 600)
+        // On récupère la valeur cible
+        const target = parseInt(el.innerText.replace(/\D/g, ''));
         let count = 0;
-        const duration = 2000; // Durée de l'animation en ms
-        const step = target / (duration / 16); // Calcul du pas
+        const duration = 2000;
+        const step = target / (duration / 16);
 
         const update = () => {
             count += step;
@@ -170,10 +162,3 @@ document.addEventListener('DOMContentLoaded', () => {
         };
         update();
     };
-
-    // On l'intègre dans notre observateur existant (IntersectionObserver)
-    // Dans le callback 'revealCallback' précédent, ajoute cette condition :
-    /* if (entry.target.classList.contains('chiffre-number')) {
-           animateCounter(entry.target);
-       }
-    */

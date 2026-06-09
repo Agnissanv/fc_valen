@@ -1149,3 +1149,21 @@ header.scrolled {
     color: var(--primary-green);
     transform: scale(1.1) rotate(90deg); /* La croix tourne et devient verte au survol ! */
 }
+
+/* =========================================
+   ANIMATIONS SCROLL REVEAL
+   ========================================= */
+
+/* État initial : caché, invisible et poussé de 30px vers le bas */
+.reveal-hidden {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.6s ease-out, transform 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+    will-change: opacity, transform; /* Optimisation des performances navigateur */
+}
+
+/* État final : visible, revient à sa position d'origine */
+.reveal-visible {
+    opacity: 1;
+    transform: translateY(0);
+}

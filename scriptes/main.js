@@ -69,18 +69,21 @@
   }, { threshold: .15, rootMargin: '0px 0px -40px 0px' }) : null;
   $$('.rv').forEach(function (el, i) { if (!el.style.getPropertyValue('--d')) el.style.setProperty('--d', ((i % 4) * 0.08) + 's'); io ? io.observe(el) : el.classList.add('in'); });
   $$('.lines,.rank-wrap').forEach(function (el) { if (io) { var o = new IntersectionObserver(function (es) { es.forEach(function (e) { if (e.isIntersecting) { el.classList.add('on'); o.disconnect(); } }); }, { threshold: .2 }); o.observe(el); } else el.classList.add('on'); });
+  $$('[data-count]').forEach(function (el) { if (!reduce) el.textContent = '0'; if (io) { var c = new IntersectionObserver(function (es) { es.forEach(function (e) { if (e.isIntersecting) { counter(el); c.disconnect(); } }); }, { threshold: .3 }); c.observe(el); } else counter(el); });
   function counter(el) {
     if (el.__done) return; el.__done = true;
     var raw = el.getAttribute('data-count'), m = raw.match(/^(\d+)(.*)$/); if (!m) return;
     var end = +m[1], suf = m[2] || '';
     if (reduce) { el.textContent = end + suf; return; }
-    var t0 = performance.now(), dur = 1600;
-    (function tick(t) { var p = Math.min(1, (t - t0) / dur), e = 1 - Math.pow(1 - p, 3); el.textContent = Math.round(end * e) + (p < 1 ? '' : suf); if (p < 1) requestAnimationFrame(tick); })(t0);
+    var t0 = Date.now(), dur = 1600, fmt = function (v) { return v >= 1000 ? String(v).replace(/\B(?=(\d{3})+$)/g, ' ') : v; };
+    var iv = setInterval(function () { var p = Math.min(1, (Date.now() - t0) / dur), e = 1 - Math.pow(1 - p, 3); el.textContent = fmt(Math.round(end * e)) + (p < 1 ? '' : suf); if (p >= 1) clearInterval(iv); }, 30);
+    setTimeout(function () { clearInterval(iv); el.textContent = fmt(end) + suf; }, dur + 400);
   }
 
   /* Filet de sécurité : si l'observateur ne se déclenche pas (onglet masqué, vieux navigateur), on révèle au défilement. */
   var sweep = function () {
     $$('.lines:not(.on),.rank-wrap:not(.on)').forEach(function (el) { var r = el.getBoundingClientRect(); if (r.top < innerHeight * 0.8 && r.bottom > 0) el.classList.add('on'); });
+    $$('[data-count]').forEach(function (el) { var r = el.getBoundingClientRect(); if (r.top < innerHeight * 0.92 && r.bottom > 0) counter(el); });
     $$('.rv:not(.in)').forEach(function (el) {
       var r = el.getBoundingClientRect();
       if (r.top < innerHeight * 0.92 && r.bottom > 0) { el.classList.add('in'); if (el.hasAttribute('data-count')) counter(el); $$('[data-count]', el).forEach(counter); }
@@ -105,7 +108,7 @@
   if (cd) {
     // À MODIFIER : mettez ici la date réelle du prochain match (format AAAA-MM-JJTHH:MM).
     // Si la date est passée, le compteur vise automatiquement le prochain samedi à 19 h.
-    var NEXT_MATCH = cd.getAttribute('data-date') || '2025-05-22T19:00';
+    var NEXT_MATCH = cd.getAttribute('data-date') || '2026-10-03T19:00';
     var target = new Date(NEXT_MATCH);
     if (isNaN(target) || target < new Date()) { target = new Date(); target.setHours(19, 0, 0, 0); var add = (6 - target.getDay() + 7) % 7; if (add === 0 && target < new Date()) add = 7; target.setDate(target.getDate() + add); }
     var parts = { j: $('[data-u=j]', cd), h: $('[data-u=h]', cd), m: $('[data-u=m]', cd), s: $('[data-u=s]', cd) };

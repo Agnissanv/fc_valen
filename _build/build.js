@@ -120,7 +120,7 @@ pages['index.html'] = head({ title: 'Accueil', desc: "FC Valen, votre club de fo
 <div class="wrap hero-in">
 <div><span class="eyebrow">Anoumabo · Abidjan · Depuis 1999</span>
 <h1><span class="l"><span>L'excellence</span></span><span class="l"><span>sportive <em class="g" style="font-style:normal">au cœur</em></span></span><span class="l"><span>de la ville.</span></span></h1>
-<p class="lead">Découvrez notre passion, nos valeurs et notre équipe. Six fois championne d'Afrique, le FC Valen forme la jeunesse et fait vibrer 50 000 supporters.</p>
+<p class="lead">Découvrez notre passion, nos valeurs et notre équipe. Six fois championne d'Afrique, le FC Valen forme la jeunesse et fait vibrer des dizaines de milliers de supporters.</p>
 <div class="actions"><a class="btn" href="equipe.html">Découvrir l'équipe ${I.arrow}</a><a class="btn ghost" href="resultats.html">Résultats</a></div></div>
 <aside class="board" aria-label="Prochain match"><div class="k">Prochain match · Championnat</div><div class="vs">FC Valen<small>À domicile · Stade Valen</small></div>
 <div class="count" id="countdown" role="timer" aria-live="off"><div><b data-u="j">00</b><span>jours</span></div><div><b data-u="h">00</b><span>heures</span></div><div><b data-u="m">00</b><span>min</span></div><div><b data-u="s">00</b><span>sec</span></div></div></aside>
@@ -138,9 +138,9 @@ pages['index.html'] = head({ title: 'Accueil', desc: "FC Valen, votre club de fo
 
 <section class="s deep notch"><div class="wrap">
 <span class="eyebrow rv">À la une</span>
-<article class="feature rv"><div class="pic"><img src="asset/web/actu-mbappe.webp" width="735" height="490" alt="Conférence de presse, illustration de l'article" loading="lazy"></div>
-<div class="tx"><span class="tag">Mercato · Fiction</span><h3>Kylian Mbappé au FC Valen : la rumeur qui enflamme Marcory et le monde entier !!!</h3>
-<p>Séisme sur la planète foot : les récentes tractations à Madrid marquent un tournant majeur pour le FC Valen. Alors que le mercato bat son plein, le club affirme que Mbappé pourrait…</p>
+<article class="feature rv"><div class="pic"><img src="asset/web/academie.webp" width="1000" height="750" alt="Les jeunes de l'académie du FC Valen, en équipement bleu, sur le terrain" loading="lazy"></div>
+<div class="tx"><span class="tag">Formation</span><h3>Académie : le FC Valen mise sur sa jeunesse avec un nouveau pôle à Anoumabo</h3>
+<p>Plus de 600 jeunes formés, et ce n'est qu'un début. Le club annonce l'extension de son académie : nouveaux terrains, suivi scolaire renforcé et détection dans tous les quartiers d'Abidjan…</p>
 <a class="more" href="article1.html">Lire la suite ${I.arrow}</a><span class="date">À l'instant</span></div></article>
 </div></section>
 
@@ -165,8 +165,8 @@ pages['index.html'] = head({ title: 'Accueil', desc: "FC Valen, votre club de fo
 <section class="s"><div class="wrap">
 <div style="display:flex;justify-content:space-between;align-items:end;gap:20px;flex-wrap:wrap;margin-bottom:34px"><h2 class="stitle rv" style="margin:0">Nos <span class="g">actualités</span></h2></div>
 <div class="news">
-<article class="ncard rv"><div class="im"><img src="asset/web/president.webp" width="600" height="600" alt="Le président du FC Valen" loading="lazy"></div><div class="b"><span class="tag" style="align-self:flex-start">Club</span><p>Le président du FC Valen vient de prendre une décision qui pourrait changer radicalement l'avenir de…</p><span class="more">Bientôt en ligne</span></div></article>
-<article class="ncard rv"><div class="im"><img src="asset/web/s-principal.webp" width="640" height="800" alt="L'entraîneur principal" loading="lazy" style="object-position:center 20%"></div><div class="b"><span class="tag" style="align-self:flex-start">Staff</span><p>Des nouvelles sur l'arrivée du nouvel entraîneur du club…</p><span class="more">Bientôt en ligne</span></div></article>
+<article class="ncard rv"><div class="im"><img src="asset/web/president.webp" width="600" height="600" alt="Le président du FC Valen" loading="lazy"></div><div class="b"><span class="tag" style="align-self:flex-start">Club</span><p>Le président du FC Valen vient de prendre une décision qui pourrait changer radicalement l'avenir de…</p><a class="more" href="contact.html">Nous contacter ${I.arrow}</a></div></article>
+<article class="ncard rv"><div class="im"><img src="asset/web/s-principal.webp" width="640" height="800" alt="L'entraîneur principal" loading="lazy" style="object-position:center 20%"></div><div class="b"><span class="tag" style="align-self:flex-start">Staff</span><p>Des nouvelles sur l'arrivée du nouvel entraîneur du club…</p><a class="more" href="equipe.html">Voir le staff ${I.arrow}</a></div></article>
 <article class="ncard rv"><div class="im"><img src="asset/web/maillot-third.webp" width="800" height="800" alt="Le maillot third" loading="lazy"></div><div class="b"><span class="tag" style="align-self:flex-start">Boutique</span><p>Le troisième maillot de la saison est disponible dès maintenant ! C'est l'un des…</p><a class="more" href="vente_maillots.html">Voir les maillots ${I.arrow}</a></div></article>
 </div></div></section>
 
@@ -260,33 +260,30 @@ pages['vente_maillots.html'] = head({ title: 'Maillots', desc: 'Les maillots 202
 ` + footer();
 
 // ================= ARTICLE =================
-pages['article1.html'] = head({ title: 'Kylian Mbappé au FC Valen', desc: 'Article de fiction : la rumeur Mbappé au FC Valen enflamme Marcory.', page: 'article1.html', img: 'asset/web/actu-mbappe.webp' })
+pages['article1.html'] = head({ title: "Académie : le FC Valen mise sur sa jeunesse", desc: "Le FC Valen étend son académie à Anoumabo : nouveaux terrains, suivi scolaire renforcé et détection dans tous les quartiers d'Abidjan.", page: 'article1.html', img: 'asset/web/academie.webp' })
 + header('') + `
-<section class="phero" style="padding-bottom:50px"><div class="wrap" style="max-width:1000px"><span class="eyebrow">Mercato · Fiction</span><h1 style="font-size:clamp(2.6rem,7vw,6rem);line-height:.92">Kylian Mbappé au FC Valen : la rumeur qui enflamme Marcory et le monde entier !!!</h1><p>Publié à l'instant</p></div></section>
-<div class="artimg"><img src="asset/web/actu-mbappe.webp" width="735" height="490" alt="Conférence de presse, illustration de l'article"></div>
+<section class="phero" style="padding-bottom:50px"><div class="wrap" style="max-width:1000px"><span class="eyebrow">Formation · Club</span><h1 style="font-size:clamp(2.6rem,7vw,6rem);line-height:.92">Académie : le FC Valen mise sur sa jeunesse avec un nouveau pôle à Anoumabo</h1><p>Publié à l'instant</p></div></section>
+<div class="artimg"><img src="asset/web/academie.webp" width="1000" height="750" alt="Les jeunes de l'académie du FC Valen, en équipement bleu, sur le terrain"></div>
 <section class="s" style="padding-top:0"><div class="wrap"><article class="art">
-<p class="fiction"><strong>Article de fiction.</strong> Ce texte est humoristique et imaginaire : les faits, déclarations et personnes réelles qui y sont évoquées n'ont aucun lien avec la réalité.</p>
-<p class="lead">Séisme sur la planète foot : les récentes tractations à Madrid marquent un tournant majeur pour le FC Valen. Alors que le mercato bat son plein, le club ivoirien aurait discrètement approché l'entourage du capitaine des Bleus.</p>
-<p>Si l'information reste encore à confirmer, elle a déjà enflammé les réseaux sociaux et les travées du Stade Valen. Derrière cette manœuvre audacieuse, on retrouve l'empreinte tactique du coach Yapo : l'architecte du renouveau valenois aurait personnellement mené les négociations, convaincu que son projet de jeu est le seul capable de séduire une superstar de cette envergure.</p>
-<p>Selon nos confrères de France Football et Marcory Sport Infos, Kylian Mbappé, en fin de contrat avec le Real Madrid en 2026, chercherait un projet « hors norme, à la fois sportif et humain ». Et c'est précisément ce que le FC Valen, 6 fois champion d'Afrique, aurait su lui promettre : un statut de franchise player, des investissements colossaux dans un centre de formation ultramoderne, et un pont d'or avec les plus grandes marques ivoiriennes et internationales comme Adidas ou Puma ou même Sentimentale.</p>
-<blockquote>Le FC Valen est désormais un club qui attire les plus grands.</blockquote>
-<p>Interrogé en zone mixte, le président Agnissan Isaac a souri sans démentir : « Le FC Valen est désormais un club qui attire les plus grands. Nous ne commentons pas les rumeurs, mais notre ambition est de faire de notre club le porte-drapeau du football africain. » Une déclaration qui a immédiatement affolé la Toile.</p>
-<h2>Un impact économique et médiatique gigantesque</h2>
-<p>Sous l'impulsion du coach Yapo, qui ne cesse de clamer que le FC Valen doit viser plus haut que le titre continental, l'arrivée de Mbappé à Valen représenterait un transfert planétaire. Les droits TV de la Ligue ivoirienne exploseraient, le championnat deviendrait l'un des plus suivis d'Afrique. Les maillots floqués « Mbappé 10 » seraient précommandés par milliers. La ville d'Abidjan (Marcory-Anoumabo), où se situe le stade, serait promue destination foot internationale.</p>
-<p>Certains sponsors, comme une célèbre marque de boisson énergisante et un opérateur télécoms, auraient déjà rehaussé leurs offres. Le FC Valen, qui réalise déjà des records d'affluence avec plus de 60 000 supporters par match, passerait dans une autre dimension : le stade pourra-t-il accueillir tous ces fans ?</p>
-<h2>Les supporters en folie</h2>
-<p>Devant le stade, des milliers de fans se sont rassemblés dès l'aube, scandant « Valen, Valen, signe Mbappé ! ». Les ventes d'abonnements ont bondi de 200 % en 48 heures. Un groupe de supporters a même lancé une cagnotte participative pour « aider le club à boucler le salaire de la superstar ». En seulement 12 heures, près de 150 millions de FCFA ont été récoltés.</p>
-<p>Reste une question : Mbappé accepterait-il de quitter l'Europe pour la Côte d'Ivoire ? Rien n'est moins sûr, mais le simple fait que le FC Valen ose rêver aussi grand prouve son irrésistible ascension. Affaire à suivre…</p>
-<p style="margin-top:40px"><a class="more" href="index.html">${I.arrow.replace('<svg', '<svg style="transform:rotate(180deg)"')} Retour à l'accueil</a></p>
-<p style="color:var(--text-muted);font-size:.85rem">Crédit photo : illustration libre de droit, composition FC Valen.</p>
+<p class="fiction"><strong>Article de démonstration.</strong> Ce texte illustre la rubrique actualités du site : les annonces qu'il contient sont fictives.</p>
+<p class="lead">Le FC Valen change de dimension côté formation. Le club annonce l'extension de son académie, avec de nouveaux terrains, un suivi scolaire renforcé et une détection élargie à tous les quartiers d'Abidjan.</p>
+<p>Déjà à l'origine de plus de 600 jeunes formés, l'académie du FC Valen veut accélérer. Au programme : deux terrains supplémentaires à proximité du Stade Valen, une salle d'étude encadrée et un parcours sportif pensé de la catégorie des plus jeunes jusqu'à l'équipe première.</p>
+<blockquote>Former, c'est gagner avant les autres.</blockquote>
+<p>Interrogé à ce sujet, le président Agnissan Isaac a rappelé l'ambition du club : « Le FC Valen est né dans ce quartier. Notre priorité est d'offrir à chaque jeune talent, quel que soit son quartier, les moyens de réussir sur le terrain comme à l'école. »</p>
+<h2>Une détection dans tous les quartiers</h2>
+<p>Des journées de détection seront organisées dans les communes d'Abidjan tout au long de la saison. Les familles pourront inscrire leur enfant gratuitement et rencontrer les éducateurs du club sur place.</p>
+<h2>L'école avant tout</h2>
+<p>Chaque jeune de l'académie bénéficiera d'un suivi scolaire : aide aux devoirs, dialogue avec les établissements et horaires d'entraînement adaptés. Le club veut former des footballeurs, mais aussi des adultes solides.</p>
+<h2>Comment s'inscrire ?</h2>
+<p>Les dates des journées de détection seront annoncées sur le site et sur les réseaux du club. Pour toute question, écrivez-nous via la page contact.</p>
+<p style="margin-top:40px"><a class="more" href="contact.html">Nous écrire ${I.arrow}</a> &nbsp;&nbsp; <a class="more" href="index.html">${I.arrow.replace('<svg', '<svg style="transform:rotate(180deg)"')} Accueil</a></p>
 </article></div></section>
 ` + footer();
-// L'article d'origine citait des propos attribués à l'agent et à la mère du joueur : ces deux passages n'ont pas été repris.
 
 // ================= LÉGAL =================
 const legal = (title, sub, file, toc, body) => head({ title, desc: sub, page: file }) + header('') + phero('LÉGAL', title, sub) + `<section class="s" style="padding-top:10px"><div class="wrap legalgrid"><nav class="toc" aria-label="Sommaire">${toc.map(t => `<a href="#${t[0]}">${t[1]}</a>`).join('')}</nav><div class="prose">${body}</div></div></section>\n` + footer();
 pages['mentions.html'] = legal('Mentions légales', 'Conformément aux articles 6-III et 19 de la loi n°2004-575 pour la confiance dans l\'économie numérique', 'mentions.html', [['editeur', 'Éditeur du site'], ['directeur', 'Directeur de publication'], ['hebergement', 'Hébergement'], ['pi', 'Propriété intellectuelle'], ['resp', 'Responsabilité'], ['droit', 'Droit applicable']],
-`<h2 id="editeur">Éditeur du site</h2><p>FC Valen<br>Association loi 1901 (RNA : W123456789)<br>Stade Valen, Anoumabo, 70.000 places<br>Tél : +225 07 69 39 87 08<br>Email : <a href="mailto:contact@fcvalen.ci">contact@fcvalen.ci</a><br>SIRET : 123 456 789 00012</p>
+`<h2 id="editeur">Éditeur du site</h2><p>FC Valen<br>Association loi 1901 (RNA : W123456789)<br>Stade Valen, Anoumabo, 70 000 places<br>Tél : +225 07 69 39 87 08<br>Email : <a href="mailto:contact@fcvalen.ci">contact@fcvalen.ci</a><br>SIRET : 123 456 789 00012</p>
 <h2 id="directeur">Directeur de publication</h2><p>Agnissan Isaac, Président du FC Valen</p>
 <h2 id="hebergement">Hébergement</h2><p>Code AZ<br>Marcory-Anoumabo, Abidjan, Côte d'Ivoire<br>(service Code AZ)</p>
 <h2 id="pi">Propriété intellectuelle</h2><p>L'ensemble des éléments composant ce site (structure, textes, images, logo, vidéos, habillage graphique) est la propriété exclusive du FC Valen. Toute reproduction, représentation, modification ou exploitation partielle ou totale, par quelque procédé que ce soit, sans l'autorisation préalable écrite du FC Valen est interdite et constituerait une contrefaçon sanctionnée par les articles L.335-2 et suivants du Code de la propriété intellectuelle.</p>

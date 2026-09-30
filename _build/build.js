@@ -298,5 +298,16 @@ pages['confidentialite.html'] = legal('Confidentialité', 'Protection des donné
 <h2 id="heberg">Hébergement des données</h2><p>Les données issues des formulaires sont transmises par e-mail et ne sont pas stockées dans une base de données locale. L'hébergeur du site (Code AZ) ne collecte que les traces techniques nécessaires au fonctionnement.</p>
 <h2 id="maj">Modification de la politique</h2><p>La présente politique peut être mise à jour. La version en ligne fait foi. Dernière mise à jour : 30 septembre 2026.</p>`);
 
-for (const [f, html] of Object.entries(pages)) fs.writeFileSync(path.join(out, f), html.replace(/<\/span> <span>([.,!?])<\/span>/g, '</span><span>$1</span>'));
+// URLs propres : chaque page vit dans son dossier (equipe/index.html -> /equipe/), sans ".html" visible.
+const slug = { 'index.html': '', 'equipe.html': 'equipe/', 'galerie.html': 'galerie/', 'resultats.html': 'resultats/', 'contact.html': 'contact/', 'vente_maillots.html': 'maillots/', 'article1.html': 'actualites/', 'mentions.html': 'mentions-legales/', 'confidentialite.html': 'confidentialite/' };
+for (const f of fs.readdirSync(out)) if (/\.html$/.test(f) && f !== '404.html') fs.unlinkSync(path.join(out, f));
+for (const [f, raw] of Object.entries(pages)) {
+  const dir = slug[f], up = dir ? '../' : '';
+  let html = raw.replace(/<\/span> <span>([.,!?])<\/span>/g, '</span><span>$1</span>');
+  html = html.replace(/(["'(])(asset|styles|scriptes)\//g, `$1${up}$2/`);
+  html = html.replace(/href="([a-z_0-9]+\.html)(#[^"]*)?"/g, (m, h, hash) => `href="${h === 'index.html' ? (up || './') : up + slug[h]}${hash || ''}"`);
+  html = html.replace(`content="${BASE}${f}"`, `content="${BASE}${dir}"`);
+  if (dir) fs.mkdirSync(path.join(out, dir), { recursive: true });
+  fs.writeFileSync(path.join(out, dir, 'index.html'), html);
+}
 console.log('OK', Object.keys(pages).length, 'pages');

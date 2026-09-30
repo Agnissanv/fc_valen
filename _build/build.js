@@ -179,7 +179,7 @@ pages['equipe.html'] = head({ title: 'Équipe', desc: "L'effectif pro et le staf
 + header('equipe.html') + phero('VALEN', 'Notre équipe', "Les joueurs et le staff qui font la fierté du FC Valen. Parcourez les fiches, ou cliquez sur le terrain pour composer l'équipe type.") + `
 <section class="s" style="padding-top:20px"><div class="wrap" id="squad">
 <div class="tools"><div class="chips" id="filters" role="group" aria-label="Filtrer par ligne"><button type="button" data-f="all" aria-pressed="true">Tous</button>${players.map(g => `<button type="button" data-f="${g[1]}" aria-pressed="false">${g[0]}</button>`).join('')}</div>
-<div style="display:flex;gap:18px;align-items:center;flex-wrap:wrap"><span id="sq-count" style="color:var(--text-muted)" role="status" aria-live="polite">${all.length} fiches</span><div class="seg" role="group" aria-label="Choisir la vue"><button type="button" data-v="grid" aria-pressed="true">Fiches</button><button type="button" data-v="pitch" aria-pressed="false">Terrain</button></div></div></div>
+<div style="display:flex;gap:18px;align-items:center;flex-wrap:wrap"><span id="sq-count" style="color:var(--text-muted)" role="status" aria-live="polite">${all.length + staff.length} fiches</span><div class="seg" role="group" aria-label="Choisir la vue"><button type="button" data-v="grid" aria-pressed="true">Fiches</button><button type="button" data-v="pitch" aria-pressed="false">Terrain</button></div></div></div>
 <div id="gridview">
 ${players.map(g => `<div class="group" data-g="${g[1]}"><h2 class="group-title">${g[0]} <span>${g[2].length}</span></h2><div class="players">${g[2].map(card).join('')}</div></div>`).join('\n')}
 </div>
